@@ -25,11 +25,14 @@ The final output includes:
 - Their average monthly transaction count
 ---
 ## Complete Query
+```
 CREATE DATABASE Assessment_Q2_SQL;
-
+```
+```
 SELECT * FROM adashi_staging.savings_savingsaccount;
 SELECT * FROM adashi_staging.users_customuser;
-
+```
+```
 WITH monthly_transaction_counts AS (
     SELECT
         owner_id,
@@ -47,6 +50,9 @@ average_transactions AS (
     GROUP BY owner_id
 ),
 categorized_customers AS (
+```
+ 
+```    
     SELECT
         owner_id,
         CASE
@@ -58,13 +64,16 @@ categorized_customers AS (
     FROM monthly_transaction_counts
     GROUP BY owner_id
 )
+```
+```
 SELECT
     frequency_category,
     COUNT(*) AS customer_count,
     ROUND(AVG(avg_transactions_per_month), 1) AS avg_transactions_per_month
 FROM categorized_customers
 GROUP BY frequency_category;
-
+```
+---
 ## My Approach
 I structured the SQL solution in 4 steps using Common Table Expressions (WITH clauses):
 
