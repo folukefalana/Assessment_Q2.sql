@@ -2,6 +2,7 @@
 
 ## Introduction
 Transaction Frequency Analysis
+
 The finance team wants to analyze how often customers transact to segment them (e.g., frequent vs. occasional users).
 
 ---
@@ -78,6 +79,7 @@ GROUP BY frequency_category;
 I structured the SQL solution in 4 steps using Common Table Expressions (WITH clauses):
 
 1. Monthly Transaction Count per Customer
+   
 I first counted how many transactions each customer made in each month:
 ```
 SELECT
@@ -89,6 +91,7 @@ FROM savings_savingsaccount
 GROUP BY owner_id, YEAR(transaction_date), MONTH(transaction_date)
 ```
 2. Average Monthly Transactions
+
 I calculated the average of these monthly counts to understand customer transaction frequency over time.
 ```
 SELECT
@@ -114,6 +117,7 @@ END AS frequency_category
 ```
 
 4. Output
+
 The final result showed how many customers fell into each category and their average behavior.
 ```
 SELECT
